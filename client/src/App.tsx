@@ -1,22 +1,33 @@
 import React from 'react';
+import { graphql, QueryRenderer } from 'react-relay';
+import environment from './RelayEnvironment';
+
 import './App.css';
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <main>
+        <QueryRenderer environment={environment} query={graphql`
+          query allTodos {
+            nodes {
+              id,
+              task,
+              completed,
+              dateCreated,
+              dateUpdated
+            }
+          }
+        `}
+        variables={{}}
+        render={(error: any, props: any) => {
+          if(error) {
+            return <div>Error rendering query...</div>
+          }
+          return <div>{JSON.stringify(props)}</div>
+        }}>
+        </QueryRenderer>
+      </main>
     </div>
   );
 }
