@@ -20,7 +20,7 @@ function App() {
           }
         `}
         variables={{}}
-        render={(error: any, props: any) => {
+        render={({error, props}) => {
           if(error) {
             return <div>Error rendering query...</div>
           }
