@@ -15,13 +15,15 @@
     "react-dom": "^16.13.1",
     "react-relay": "^9.0.0",
     "react-scripts": "3.4.1",
+    "relay-runtime": "^9.0.0",
     "typescript": "~3.7.2"
   },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "relay": "relay-compiler --src ./src --schema ./schema.graphql --extensions js jsx --language typescript --artifactDirectory ./src/__generated__"
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -37,5 +39,14 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "@types/react-relay": "^7.0.3",
+    "@types/relay-runtime": "^8.0.8",
+    "babel-plugin-relay": "^9.0.0",
+    "graphql": "^14.2.0",
+    "relay-compiler": "^9.0.0",
+    "relay-compiler-language-typescript": "^12.0.0",
+    "relay-config": "^9.0.0"
   }
 }
