@@ -23,7 +23,7 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "relay": "relay-compiler --src ./src --schema ./data/schema.graphql --extensions js jsx ts tsx --language typescript --artifactDirectory ./src/__generated__ --watch"
+    "relay": "relay-compiler --src ./src --schema ./data/schema.graphql --extensions js jsx ts tsx --language typescript --artifactDirectory ./src/__generated__ --exclude ./src/__generated__ --watch"
   },
   "eslintConfig": {
     "extends": "react-app"
