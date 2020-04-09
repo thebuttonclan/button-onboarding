@@ -10,13 +10,15 @@ function App() {
     <div className="App">
       <main>
         <QueryRenderer environment={environment} query={graphql`
-          query allTodos {
-            nodes {
-              id,
-              task,
-              completed,
-              dateCreated,
-              dateUpdated
+          query AppQuery {
+            allTodos {
+              nodes {
+                id,
+                task,
+                completed,
+                dateCreated,
+                dateUpdated
+              }
             }
           }
         `}
