@@ -10,7 +10,7 @@
   "scripts": {
     "start": "yarn run api",
     "preapi": "mkdir -p client/data",
-    "api": "postgraphile -s todo_app -c 'postgres:///button_starter' --export-schema-graphql client/data/schema.graphql --sort-export --watch"
+    "api": "postgraphile -s todo_app -c 'postgres:///button_starter' --export-schema-graphql client/data/schema.graphql --sort-export --classic-ids --watch"
   },
   "dependencies": {
     "postgraphile": "^4.6.0"
