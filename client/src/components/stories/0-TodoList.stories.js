@@ -4,6 +4,8 @@ import { storiesOf } from '@storybook/react';
 import TodoList from '../TodoList';
 import TodoListItem from '../TodoListItem';
 
+import '../../index.css';
+
 const todos = [
   {task: "Do Task 1", id: "WyJ0b2RvcyIsMl0=", completed: false},
   {task: "Do Task 2", id: "WyJ0b2RvcyIsM10=", completed: true},

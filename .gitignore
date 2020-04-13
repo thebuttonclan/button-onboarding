@@ -1,5 +1,6 @@
 node_modules
 .DS_Store
+.log
 
-client/src/__generated__
+client/src/components/__generated__
 client/data
