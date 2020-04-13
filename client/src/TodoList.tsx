@@ -33,3 +33,7 @@ export default function TodoList({todos}: Props) {
   });
   return <form>{listItems}</form>
 }
+
+TodoList.defaultProps = {
+  todos: [],
+};
