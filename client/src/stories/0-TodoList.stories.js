@@ -17,3 +17,8 @@ storiesOf('TodoList', module)
   .add('List is empty (no todos)', () => {
     return <TodoList />
   })
+
+storiesOf('TodoListItem', module)
+.add('An individual item (readonly)', () => {
+  return <TodoListItem completed={todos[1].completed}>{todos[1].task}</TodoListItem>
+})
