@@ -1,6 +1,7 @@
 import React from 'react';
 import graphql from 'babel-plugin-relay/macro';
 import { createFragmentContainer } from 'react-relay';
+import { TodoListItem_todo } from './__generated__/TodoListItem_todo.graphql';
 
 import './TodoListItem.css';
 
@@ -8,13 +9,10 @@ export interface Props {
   completed?: boolean;
   markComplete: (event: React.FormEvent<HTMLInputElement>) => void;
   children: React.ReactNode;
-  todo: {}
+  todo: TodoListItem_todo;
 }
 
 function TodoListItem(props: Props) {
-  if(props.todo) {
-    console.log('I have a todo!: ', props.todo);
-  }
   return (
     <label>
       <input 
@@ -23,7 +21,7 @@ function TodoListItem(props: Props) {
         checked={props.completed}
         onChange={props.markComplete}
         />
-      <span>{props.children}</span>
+      <span>{props.todo.task}</span>
     </label>
   )
 }
