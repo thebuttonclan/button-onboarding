@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import TodoListItem from './TodoListItem';
+import './TodoList.css';
 
 export interface Props {
   todos: {task: string, id: string, completed?: boolean}[];
@@ -31,7 +32,9 @@ export default function TodoList({todos}: Props) {
       </TodoListItem>
     )
   });
-  return <form>{listItems}</form>
+  return <form>{
+    listItems.length === 0 ? <p>Nothing left to do!</p> : listItems
+  }</form>
 }
 
 TodoList.defaultProps = {

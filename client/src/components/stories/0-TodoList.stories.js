@@ -21,6 +21,9 @@ storiesOf('TodoList', module)
   })
 
 storiesOf('TodoListItem', module)
-.add('An individual item (readonly)', () => {
-  return <TodoListItem completed={todos[1].completed}>{todos[1].task}</TodoListItem>
-})
+  .add('Completed item (readonly)', () => {
+    return <TodoListItem completed={true}>{todos[1].task}</TodoListItem>
+  })
+  .add('Incomplete item (readonly)', () => {
+    return <TodoListItem completed={false}>{todos[0].task}</TodoListItem>
+  })

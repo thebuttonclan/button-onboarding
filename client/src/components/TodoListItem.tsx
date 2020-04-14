@@ -1,4 +1,5 @@
 import React from 'react';
+import './TodoListItem.css';
 
 export interface Props {
   completed?: boolean;
@@ -14,7 +15,7 @@ export default function TodoListItem(props: Props) {
         checked={props.completed}
         onChange={props.markComplete}
         />
-      {props.children}
+      <span>{props.children}</span>
     </label>
   )
 }
