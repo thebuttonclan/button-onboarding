@@ -1,7 +1,8 @@
 import React from 'react';
 import { QueryRenderer } from 'react-relay';
 import graphql from 'babel-plugin-relay/macro';
-import environment from './RelayEnvironment';
+import environment from '../RelayEnvironment';
+import TodoList from './TodoList';
 
 import './App.css';
 
@@ -23,11 +24,13 @@ function App() {
           }
         `}
         variables={{}}
-        render={({error, props}) => {
+        render={({error, props}:{error: any, props: any}) => {
           if(error) {
             return <div>Error rendering query...</div>
           }
-          return <div>{JSON.stringify(props)}</div>
+          if(props) {
+            return <TodoList todos={props.allTodos.nodes}/>
+          }
         }}>
         </QueryRenderer>
       </main>
