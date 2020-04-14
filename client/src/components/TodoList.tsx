@@ -1,13 +1,16 @@
 import React, { useState } from 'react';
-import TodoListItem from './TodoListItem';
+import { TodoListItemContainer as TodoListItem } from './TodoListItem';
+import graphql from 'babel-plugin-relay/macro';
+import { createFragmentContainer } from 'react-relay';
+
 import './TodoList.css';
 
 export interface Props {
-  todos: {task: string, id: string, completed?: boolean}[];
-  // markComplete: (id: string, completed?: boolean) => void;
+  todos: {task: string, id: string, completed?: boolean, todo: {}}[];
+  markComplete: (id: string, completed?: boolean) => void;
 };
 
-export default function TodoList({todos}: Props) {
+function TodoList({todos, markComplete}: Props) {
   const [items, setItems] = useState(todos);
 
   const listItems = items.map((item, i) => {
@@ -19,7 +22,7 @@ export default function TodoList({todos}: Props) {
           ...prev.slice(i+1)
         ]
       });
-      // markComplete(item.id, !item.completed)
+      markComplete(item.id, !item.completed)
     };
 
     return (
@@ -27,6 +30,7 @@ export default function TodoList({todos}: Props) {
         key={item.id}
         completed={item.completed}
         markComplete={handleChange}
+        todo={item.todo}
         >
       {item.task}
       </TodoListItem>
@@ -39,4 +43,15 @@ export default function TodoList({todos}: Props) {
 
 TodoList.defaultProps = {
   todos: [],
+  markComplete: () => {},
 };
+
+const TodoListContainer = createFragmentContainer(TodoList, {todos: graphql`
+  fragment TodoList_todos on Todo @relay(plural: true) {
+    ...TodoListItem_todo
+  }
+`});
+
+export { TodoListContainer, TodoList };
+
+// export { TodoList };
