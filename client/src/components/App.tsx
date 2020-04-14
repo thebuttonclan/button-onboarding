@@ -15,11 +15,7 @@ function App() {
           query AppQuery {
             allTodos {
               nodes {
-                id,
-                task,
-                completed,
-                dateCreated,
-                dateUpdated
+                ...TodoList_todos
               }
             }
           }
