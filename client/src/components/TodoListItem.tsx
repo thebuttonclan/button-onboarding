@@ -12,6 +12,7 @@ export default function TodoListItem(props: Props) {
     <label>
       <input 
         type="checkbox"
+        readOnly={!props.markComplete}
         checked={props.completed}
         onChange={props.markComplete}
         />
