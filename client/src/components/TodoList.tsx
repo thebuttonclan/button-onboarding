@@ -8,9 +8,10 @@ import './TodoList.css';
 
 export interface Props {
   todos: TodoList_todos;
+  children?: React.ReactNode
 };
 
-function TodoList ({todos}: Props) {
+function TodoList ({ todos, children }: Props) {
   const items = todos?.allTodos.nodes;
 
   const listItems = items.map((item, i) => {
@@ -22,9 +23,12 @@ function TodoList ({todos}: Props) {
       </TodoListItem>
     )
   });
-  return <form>{
-    listItems.length === 0 ? <p>Nothing left to do!</p> : listItems
-  }</form>
+  return (
+    <form>
+      { listItems.length === 0 ? <p>Nothing to be done! Add a new task:</p> : listItems }
+      { children }
+    </form>
+  );
 }
 
 TodoList.defaultProps = {

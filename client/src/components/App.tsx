@@ -5,6 +5,7 @@ import environment from '../RelayEnvironment';
 import { TodoListContainer as TodoList } from './TodoList';
 
 import './App.css';
+import { CreateTodo } from './CreateTodo';
 
 function App() {
   return (
@@ -21,8 +22,11 @@ function App() {
             return <div>Error rendering query...</div>
           }
           if(props) {
-            // return <TodoList markComplete={(id, bool)=>{console.log('mark complete')}} todos={props}/>
-            return <TodoList todos={props}/>
+            return (
+              <TodoList todos={props}>
+                <CreateTodo/>
+              </TodoList>
+            );
           }
         }}>
         </QueryRenderer>

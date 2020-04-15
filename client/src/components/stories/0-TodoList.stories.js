@@ -3,6 +3,7 @@ import { storiesOf } from '@storybook/react';
 
 import { TodoList } from '../TodoList';
 import { TodoListItem } from '../TodoListItem';
+import { CreateTodo } from '../CreateTodo';
 
 import '../../index.css';
 
@@ -26,4 +27,9 @@ storiesOf('TodoListItem', module)
   })
   .add('Incomplete item (readonly)', () => {
     return <TodoListItem completed={false}>{todos[0].task}</TodoListItem>
+  })
+
+storiesOf('CreateTodo', module)
+  .add('Create a new todo', () => {
+    return <CreateTodo/>
   })

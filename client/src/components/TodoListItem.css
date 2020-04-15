@@ -1,6 +1,5 @@
 label {
   display: flex;
-  align-items: center;
   padding: 1em;
   cursor: pointer;
 }
@@ -32,6 +31,6 @@ input:checked + span {
   text-decoration: line-through;
 }
 
-input:focus {
-  box-shadow: 3px 3px #3a88fd;
+input[type="checkbox"]:focus {
+  box-shadow: 3px 3px #69768a;
 }
