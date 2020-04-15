@@ -1,25 +1,54 @@
-import React from 'react';
+import React, { useState } from 'react';
 import graphql from 'babel-plugin-relay/macro';
-import { createFragmentContainer } from 'react-relay';
+import { createFragmentContainer, commitMutation, RelayProp } from 'react-relay';
 import { TodoListItem_todo } from './__generated__/TodoListItem_todo.graphql';
+import { TodoListItemMutationResponse } from './__generated__/TodoListItemMutation.graphql';
 
 import './TodoListItem.css';
 
 export interface Props {
-  completed?: boolean;
-  markComplete: (event: React.FormEvent<HTMLInputElement>) => void;
-  children: React.ReactNode;
   todo: TodoListItem_todo;
+  relay: RelayProp
 }
 
+const mutation = graphql`
+  mutation TodoListItemMutation ($input: UpdateTodoInput!) {
+    updateTodo(input: $input) {
+      todo { completed }
+      clientMutationId
+    }
+  }
+`;
+
 function TodoListItem(props: Props) {
+  const [completed, setCompleted] = useState(props.todo.completed);
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const updatedVal = e.target.checked;
+    commitMutation(props.relay.environment, {
+      mutation,
+      variables: {
+        input: {
+          id: props.todo.id,
+          todoPatch: {
+            completed: updatedVal
+          },
+          clientMutationId: `${Date.now()}-${props.todo.id}`
+        }
+      },
+      onCompleted: (resp: TodoListItemMutationResponse) => {
+        setCompleted(resp.updateTodo.todo.completed);
+      },
+      onError: (err) => console.log('Error...', err)
+    });
+  };
+
   return (
     <label>
       <input 
         type="checkbox"
-        readOnly={!props.markComplete}
-        checked={props.completed}
-        onChange={props.markComplete}
+        checked={completed}
+        onChange={handleChange}
         />
       <span>{props.todo.task}</span>
     </label>

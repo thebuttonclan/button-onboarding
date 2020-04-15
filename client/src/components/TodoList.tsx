@@ -8,10 +8,10 @@ import './TodoList.css';
 
 export interface Props {
   todos: TodoList_todos;
-  markComplete: (id: string, completed?: boolean) => void;
+  // markComplete: (id: string, completed?: boolean) => void;
 };
 
-function TodoList ({todos, markComplete}: Props) {
+function TodoList ({todos}: Props) {
   // const [items, setItems] = useState(todos);
   const items = todos?.allTodos.nodes;
 
@@ -30,7 +30,7 @@ function TodoList ({todos, markComplete}: Props) {
     return (
       <TodoListItem 
         key={item.id}
-        markComplete={handleChange}
+        // markComplete={handleChange}
         todo={item}
         >
       </TodoListItem>
@@ -43,7 +43,7 @@ function TodoList ({todos, markComplete}: Props) {
 
 TodoList.defaultProps = {
   // todos: [],
-  markComplete: () => {},
+  // markComplete: () => {},
 };
 
 const TodoListContainer = createFragmentContainer(TodoList, {todos: graphql`

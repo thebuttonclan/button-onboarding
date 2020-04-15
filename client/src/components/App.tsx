@@ -21,7 +21,8 @@ function App() {
             return <div>Error rendering query...</div>
           }
           if(props) {
-            return <TodoList markComplete={(id, bool)=>{console.log('mark complete')}} todos={props}/>
+            // return <TodoList markComplete={(id, bool)=>{console.log('mark complete')}} todos={props}/>
+            return <TodoList todos={props}/>
           }
         }}>
         </QueryRenderer>
