@@ -1,8 +1,7 @@
-import React, { useState } from 'react';
+import React from 'react';
 import graphql from 'babel-plugin-relay/macro';
 import { createFragmentContainer, commitMutation, RelayProp } from 'react-relay';
 import { TodoListItem_todo } from './__generated__/TodoListItem_todo.graphql';
-import { TodoListItemMutationResponse } from './__generated__/TodoListItemMutation.graphql';
 
 import './TodoListItem.css';
 
@@ -15,13 +14,11 @@ const mutation = graphql`
   mutation TodoListItemMutation ($input: UpdateTodoInput!) {
     updateTodo(input: $input) {
       todo { completed }
-      clientMutationId
     }
   }
 `;
 
 function TodoListItem(props: Props) {
-  const [completed, setCompleted] = useState(props.todo.completed);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const updatedVal = e.target.checked;
@@ -32,12 +29,8 @@ function TodoListItem(props: Props) {
           id: props.todo.id,
           todoPatch: {
             completed: updatedVal
-          },
-          clientMutationId: `${Date.now()}-${props.todo.id}`
+          }
         }
-      },
-      onCompleted: (resp: TodoListItemMutationResponse) => {
-        setCompleted(resp.updateTodo.todo.completed);
       },
       onError: (err) => console.log('Error...', err)
     });
@@ -47,7 +40,7 @@ function TodoListItem(props: Props) {
     <label>
       <input 
         type="checkbox"
-        checked={completed}
+        checked={props.todo.completed}
         onChange={handleChange}
         />
       <span>{props.todo.task}</span>
