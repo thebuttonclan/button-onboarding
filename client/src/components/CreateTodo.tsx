@@ -1,30 +1,47 @@
 import React from 'react';
-// import graphql from 'babel-plugin-relay/macro';
+import graphql from 'babel-plugin-relay/macro';
+import { createFragmentContainer, commitMutation } from 'react-relay';
 
 import './CreateTodo.css';
 import './TodoListItem.css';
 
-export interface Props {
+const mutation = graphql`
+  mutation CreateTodoMutation ($input: CreateTodoInput!) {
+    createTodo(input: $input) {
+      todo {
+        task
+      }
+    }
+  }
+`;
 
-};
+function CreateTodo(props) {
+  const submit = (e) => {
+    const task = e.target.form.elements.newTodo.value;
 
-// const mutation = graphql`
-//   mutation CreateTodoMutation ($input: CreateTodoInput!) {
-//     createTodo(input: $input) {
-//       todo {
-//         task
-//       }
-//     }
-//   }
-// `;
+    commitMutation(props.relay.environment, {
+      mutation,
+      variables: {
+        input: {
+          todo: { task }
+        }
+      }
+    })
+  };
 
-function CreateTodo(props: Props) {
   return (
     <div className="input-new">
-      <input type="text" value="something"/>
-      <button>Add</button>
+      <input name="newTodo" placeholder="Something to do..." />
+      <button onClick={ submit }>Add</button>
     </div>
   );
 }
 
-export { CreateTodo }
+const CreateTodoContainer = createFragmentContainer(CreateTodo, graphql`
+  fragment CreateTodo_todo on Todo {
+    task
+    ...TodoListItem_todo
+  }
+`);
+
+export { CreateTodo, CreateTodoContainer }

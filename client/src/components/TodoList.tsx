@@ -24,7 +24,7 @@ function TodoList ({ todos, children }: Props) {
     )
   });
   return (
-    <form>
+    <form onSubmit={e => e.preventDefault()}>
       { listItems.length === 0 ? <p>Nothing to be done! Add a new task:</p> : listItems }
       { children }
     </form>

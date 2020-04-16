@@ -3,9 +3,9 @@ import { QueryRenderer } from 'react-relay';
 import graphql from 'babel-plugin-relay/macro';
 import environment from '../RelayEnvironment';
 import { TodoListContainer as TodoList } from './TodoList';
+import { CreateTodoContainer as CreateTodo } from './CreateTodo';
 
 import './App.css';
-import { CreateTodo } from './CreateTodo';
 
 function App() {
   return (
