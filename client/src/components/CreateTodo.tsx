@@ -38,11 +38,6 @@ function CreateTodo(props) {
   );
 }
 
-const CreateTodoContainer = createFragmentContainer(CreateTodo, graphql`
-  fragment CreateTodo_todo on Todo {
-    task
-    ...TodoListItem_todo
-  }
-`);
+const CreateTodoContainer = createFragmentContainer(CreateTodo, {});
 
 export { CreateTodo, CreateTodoContainer }
