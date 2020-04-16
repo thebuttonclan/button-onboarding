@@ -32,6 +32,14 @@ function TodoListItem(props: Props) {
           }
         }
       },
+      optimisticResponse: {
+        updateTodo: {
+          todo: {
+            completed: updatedVal,
+            id: props.todo.id
+          },
+        }
+      },
       onError: (err) => console.log('Error...', err)
     });
   };
