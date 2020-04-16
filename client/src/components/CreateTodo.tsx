@@ -9,6 +9,7 @@ const mutation = graphql`
   mutation CreateTodoMutation ($input: CreateTodoInput!) {
     createTodo(input: $input) {
       todo {
+        id
         task
       }
     }
