@@ -21,15 +21,16 @@ const mutation = graphql`
 
 function CreateTodo(props) {
   const submit = (e) => {
-    const task = e.target.form.elements.newTodo.value;
+    const input = e.target.form.elements.newTodo;
 
     commitMutation(props.relay.environment, {
       mutation,
       variables: {
         input: {
-          todo: { task }
+          todo: { task: input.value }
         }
-      }
+      },
+      onCompleted: () => input.value = ''
     })
   };
 
