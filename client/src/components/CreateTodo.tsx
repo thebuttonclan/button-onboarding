@@ -12,6 +12,9 @@ const mutation = graphql`
         id
         task
       }
+      query {
+        ...TodoList_todos
+      }
     }
   }
 `;

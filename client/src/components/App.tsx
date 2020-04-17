@@ -13,7 +13,9 @@ function App() {
       <main>
         <QueryRenderer environment={environment} query={graphql`
           query AppQuery {
-            ...TodoList_todos
+            query {
+              ...TodoList_todos
+            }
           }
         `}
         variables={{}}
@@ -23,7 +25,7 @@ function App() {
           }
           if(props) {
             return (
-              <TodoList todos={props}>
+              <TodoList todos={props.query}>
                 <CreateTodo/>
               </TodoList>
             );
