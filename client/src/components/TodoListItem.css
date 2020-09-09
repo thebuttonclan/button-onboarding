@@ -1,0 +1,38 @@
+label {
+  display: flex;
+  padding: 1em;
+  cursor: pointer;
+  align-items: center;
+}
+
+input[type=checkbox] {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  margin: 0 0.5em 0 0;
+  outline:none;
+  flex-shrink: 0;
+
+  position: relative;
+  width: 1em;
+  height: 1em;
+  border: 0.125em solid #3a88fd;
+  border-radius: 2px;
+  font-size: inherit;
+}
+
+input:checked::before {
+  content: '\2713';
+  position: relative;
+  top: -90%;
+  left: -10%;
+  font-size: 1.5em;
+}
+
+input:checked + span {
+  text-decoration: line-through;
+}
+
+input[type="checkbox"]:focus {
+  box-shadow: 3px 3px #69768a;
+}

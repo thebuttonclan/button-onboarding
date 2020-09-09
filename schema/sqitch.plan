@@ -1,0 +1,6 @@
+%syntax-version=1.0.0
+%project=button_starter
+%uri=https://github.com/thebuttonclan/button-onboarding
+
+todo_app 2020-04-06T18:55:09Z Kristen Cooke <kristen@button.is> # Schema for all todo items
+todos [todo_app] 2020-04-06T22:27:21Z Kristen Cooke <kristen@button.is> # Adds todo items table

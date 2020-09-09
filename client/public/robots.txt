@@ -1,0 +1,4 @@
+# https://www.robotstxt.org/robotstxt.html
+# Disallow search indexing if this gets deployed:
+User-agent: *
+Disallow: /

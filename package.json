@@ -1,0 +1,18 @@
+{
+  "name": "button-onboarding",
+  "version": "1.0.0",
+  "description": "Onboarding demo of select elements of the Button stack in the form of a todo app.",
+  "main": "index.js",
+  "repository": "git@github.com:thebuttonclan/button-onboarding.git",
+  "author": "Kristen Cooke <kriscooke@users.noreply.github.com>",
+  "license": "UNLICENSED",
+  "private": true,
+  "scripts": {
+    "start": "yarn run api",
+    "preapi": "mkdir -p client/data",
+    "api": "postgraphile -s todo_app -c 'postgres:///button_starter' --export-schema-graphql client/data/schema.graphql --sort-export --classic-ids --watch"
+  },
+  "dependencies": {
+    "postgraphile": "^4.6.0"
+  }
+}
