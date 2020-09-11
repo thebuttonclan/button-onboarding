@@ -1,0 +1,19 @@
+{
+  "name": "button-onboarding-pierre",
+  "version": "1.0.0",
+  "description": "A guide to help developers onboard to the Button stack by building a simple todo app.",
+  "main": "index.js",
+  "scripts": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/pbastia/button-onboarding.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/pbastia/button-onboarding/issues"
+  },
+  "homepage": "https://github.com/pbastia/button-onboarding#readme"
+}
