@@ -25,7 +25,7 @@ function App() {
         if(!props || props == null){
           return <div>Loading...</div>
         }
-        return <div>To do: {JSON.stringify(props)}</div>;
+        return <div>To do: {props['taskById']['task']}</div>;
       }}
       />
   );
