@@ -9,7 +9,7 @@ import {
     operation : { text : any },
     variables : any,
   ) {
-    return fetch('http://localhost:5000/graphql', {
+    return fetch('/graphql', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
