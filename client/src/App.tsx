@@ -9,9 +9,9 @@ function App() {
   return (
     <QueryRenderer
       environment={environment}
-      query={graphql`
+      query={ graphql`
         query AppQuery {
-          taskById(id: 10) {
+          taskById(id: 11) {
             task
           }
         }

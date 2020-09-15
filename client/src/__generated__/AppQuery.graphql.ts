@@ -18,7 +18,7 @@ export type AppQuery = {
 
 /*
 query AppQuery {
-  taskById(id: 10) {
+  taskById(id: 11) {
     task
   }
 }
@@ -32,7 +32,7 @@ var v0 = [
       {
         "kind": "Literal",
         "name": "id",
-        "value": 10
+        "value": 11
       }
     ],
     "concreteType": "Task",
@@ -48,7 +48,7 @@ var v0 = [
         "storageKey": null
       }
     ],
-    "storageKey": "taskById(id:10)"
+    "storageKey": "taskById(id:11)"
   }
 ];
 return {
@@ -69,14 +69,14 @@ return {
     "selections": (v0/*: any*/)
   },
   "params": {
-    "cacheID": "77ad08887c81caf5258caa51a1a23a35",
+    "cacheID": "dc5071b0f9da562f82bd92ec68eddb39",
     "id": null,
     "metadata": {},
     "name": "AppQuery",
     "operationKind": "query",
-    "text": "query AppQuery {\n  taskById(id: 10) {\n    task\n  }\n}\n"
+    "text": "query AppQuery {\n  taskById(id: 11) {\n    task\n  }\n}\n"
   }
 };
 })();
-(node as any).hash = 'efe5e7cb823608d4a34629c880b535e2';
+(node as any).hash = '47689d94bf689129d6b8ed52be98f176';
 export default node;
