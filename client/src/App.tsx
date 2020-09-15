@@ -3,7 +3,8 @@ import logo from './logo.svg';
 import './App.css';
 import environment from './RelayEnvironment';
 
-import { graphql, QueryRenderer } from 'react-relay';
+import { QueryRenderer } from 'react-relay';
+const graphql = require('babel-plugin-relay/macro');
 
 function App() {
   return (
