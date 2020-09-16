@@ -3,6 +3,7 @@ import { QueryRenderer } from 'react-relay';
 import graphql from 'babel-plugin-relay/macro';
 import environment from '../RelayEnvironment';
 import { TodoListContainer as TodoList } from './TodoList';
+import { CreateTodoContainer as CreateTodo } from './CreateTodo';
 
 import './App.css';
 
@@ -12,7 +13,9 @@ function App() {
       <main>
         <QueryRenderer environment={environment} query={graphql`
           query AppQuery {
-            ...TodoList_todos
+            query {
+              ...TodoList_todos
+            }
           }
         `}
         variables={{}}
@@ -21,8 +24,11 @@ function App() {
             return <div>Error rendering query...</div>
           }
           if(props) {
-            // return <TodoList markComplete={(id, bool)=>{console.log('mark complete')}} todos={props}/>
-            return <TodoList todos={props}/>
+            return (
+              <TodoList todos={props.query}>
+                <CreateTodo/>
+              </TodoList>
+            );
           }
         }}>
         </QueryRenderer>

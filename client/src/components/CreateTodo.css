@@ -1,0 +1,39 @@
+.input-new {
+  display: flex;
+  align-items: center;
+  padding: 0 4px 4px 0;
+}
+
+.input-new input, .input-new button {
+  height: 2em;
+  font-size: inherit;
+  border-radius: 2px;
+}
+
+.input-new input {
+  flex: 2;
+  border: 1px solid #5c7190;
+  padding: 0 0.5em;
+}
+
+.input-new button {
+  width: 5.5em;
+  color: #fff;
+  font-weight: bold;
+  border: 1px transparent;
+  background: #0066ff;
+  margin-left: 1em;
+  cursor: pointer;
+}
+
+.input-new input:focus, .input-new button:focus {
+  outline: none;
+}
+
+.input-new input:focus, .input-new input:active {
+  box-shadow: 3px 3px #5c7190;
+}
+
+.input-new button:focus, .input-new button:active {
+  box-shadow: 4px 4px #063f94;
+}

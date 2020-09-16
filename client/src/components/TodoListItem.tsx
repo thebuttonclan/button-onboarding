@@ -13,7 +13,10 @@ export interface Props {
 const mutation = graphql`
   mutation TodoListItemMutation ($input: UpdateTodoInput!) {
     updateTodo(input: $input) {
-      todo { completed }
+      todo {
+        id
+        completed
+      }
     }
   }
 `;
