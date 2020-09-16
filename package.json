@@ -8,7 +8,9 @@
   "license": "UNLICENSED",
   "private": true,
   "scripts": {
-    "start": "postgraphile -s todo_app -c 'postgres:///button_starter' --watch"
+    "start": "yarn run api",
+    "preapi": "mkdir -p client/data",
+    "api": "postgraphile -s todo_app -c 'postgres:///button_starter' --export-schema-graphql client/data/schema.graphql --sort-export --classic-ids --watch"
   },
   "dependencies": {
     "postgraphile": "^4.6.0"
