@@ -1,0 +1,7 @@
+%syntax-version=1.0.0
+%project=onboarding
+%uri=https://github.com/pbastia/button-onboarding
+
+adding_schema_for_application 2020-09-11T19:03:42Z Pierre Bastianelli <pierre.bastianelli@gov.bc.ca> # Adding schema for button onboarding app
+adding_tasks_table [adding_schema_for_application] 2020-09-11T20:24:35Z Pierre Bastianelli <pierre.bastianelli@gov.bc.ca> # Creates a table for the tasks
+adding_update_trigger [adding_tasks_table] 2020-09-11T20:52:27Z Pierre Bastianelli <pierre.bastianelli@gov.bc.ca> # Creates a trigger to keep the updated timestamp correct
