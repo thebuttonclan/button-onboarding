@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "npx postgraphile -c postgres:///onboarding -s onboarding --enhance-graphiql --watch",
+    "generate-schema" : "npx postgraphile -c postgres:///onboarding -s onboarding --no-server --export-schema-json ./schema/schema.json --export-schema-graphql ./schema/schema.graphql ",
     "test": "test"
   },
   "repository": {

@@ -5,8 +5,12 @@
 import { ConcreteRequest } from "relay-runtime";
 export type AppQueryVariables = {};
 export type AppQueryResponse = {
-    readonly taskById: {
-        readonly task: string | null;
+    readonly allTasks: {
+        readonly nodes: ReadonlyArray<{
+            readonly id: number;
+            readonly task: string | null;
+            readonly completed: boolean | null;
+        } | null>;
     } | null;
 };
 export type AppQuery = {
@@ -18,8 +22,12 @@ export type AppQuery = {
 
 /*
 query AppQuery {
-  taskById(id: 11) {
-    task
+  allTasks {
+    nodes {
+      id
+      task
+      completed
+    }
   }
 }
 */
@@ -28,27 +36,46 @@ const node: ConcreteRequest = (function(){
 var v0 = [
   {
     "alias": null,
-    "args": [
-      {
-        "kind": "Literal",
-        "name": "id",
-        "value": 11
-      }
-    ],
-    "concreteType": "Task",
+    "args": null,
+    "concreteType": "TasksConnection",
     "kind": "LinkedField",
-    "name": "taskById",
+    "name": "allTasks",
     "plural": false,
     "selections": [
       {
         "alias": null,
         "args": null,
-        "kind": "ScalarField",
-        "name": "task",
+        "concreteType": "Task",
+        "kind": "LinkedField",
+        "name": "nodes",
+        "plural": true,
+        "selections": [
+          {
+            "alias": null,
+            "args": null,
+            "kind": "ScalarField",
+            "name": "id",
+            "storageKey": null
+          },
+          {
+            "alias": null,
+            "args": null,
+            "kind": "ScalarField",
+            "name": "task",
+            "storageKey": null
+          },
+          {
+            "alias": null,
+            "args": null,
+            "kind": "ScalarField",
+            "name": "completed",
+            "storageKey": null
+          }
+        ],
         "storageKey": null
       }
     ],
-    "storageKey": "taskById(id:11)"
+    "storageKey": null
   }
 ];
 return {
@@ -69,14 +96,14 @@ return {
     "selections": (v0/*: any*/)
   },
   "params": {
-    "cacheID": "dc5071b0f9da562f82bd92ec68eddb39",
+    "cacheID": "172ebf2262f3675523d75b49fedf548e",
     "id": null,
     "metadata": {},
     "name": "AppQuery",
     "operationKind": "query",
-    "text": "query AppQuery {\n  taskById(id: 11) {\n    task\n  }\n}\n"
+    "text": "query AppQuery {\n  allTasks {\n    nodes {\n      id\n      task\n      completed\n    }\n  }\n}\n"
   }
 };
 })();
-(node as any).hash = '47689d94bf689129d6b8ed52be98f176';
+(node as any).hash = 'c5e1850811c2146d914c6fa7ae13fc1e';
 export default node;

@@ -6,29 +6,48 @@ import environment from './RelayEnvironment';
 import { QueryRenderer } from 'react-relay';
 const graphql = require('babel-plugin-relay/macro');
 
-function App() {
-  return (
-    <QueryRenderer
-      environment={environment}
-      query={ graphql`
-        query AppQuery {
-          taskById(id: 11) {
-            task
+class App extends React.Component {
+  render() { 
+    return (
+      <QueryRenderer
+        environment={environment}
+        // query={ graphql`
+        //   query AppQuery {
+        //     ...TodoList_list
+        //   }
+        // `}
+
+        query={ graphql`
+          query AppQuery {
+              allTasks {
+                nodes{
+                  id,
+                  task,
+                  completed
+                }
+            }
           }
-        }
-      `}
-      variables={{}} 
-      render={({error, props}) => {
-        if(error) {
-          return <div>Error!</div>;
-        }
-        if(!props || props == null){
-          return <div>Loading...</div>
-        }
-        return <div>To do: {props['taskById']['task']}</div>;
-      }}
-      />
-  );
+        `}
+        variables={{}} 
+        render={({error, props}) => {
+
+
+          if(error) {
+            return <p>{JSON.stringify(error)}</p>;
+          }
+          if(!props || props == null){
+            return <div>Loading...</div>;
+          }
+
+          return(
+            <div>
+              <p>{JSON.stringify(props)}</p>
+            </div>
+          );
+        }}
+        />
+      );
+    }
 }
 
 export default App;

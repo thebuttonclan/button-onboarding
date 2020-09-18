@@ -1,9 +1,12 @@
+import React from 'react';
+
 import {
     Environment,
     Network,
     RecordSource,
     Store,
   } from 'relay-runtime';
+
   
   function fetchQuery(
     operation : { text : any },
