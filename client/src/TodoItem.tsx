@@ -25,11 +25,11 @@ export class TodoItem extends React.Component<Props> {
 export default createFragmentContainer(TodoItem, {
     taskData: graphql`
         fragment TodoItem_taskData on Task {
-            id,
-            rowId,
-            task,
-            completed,
-            dateCreated,
+            id
+            rowId
+            task
+            completed
+            dateCreated
             dateUpdated
         }
     `
