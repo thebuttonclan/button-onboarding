@@ -15,7 +15,9 @@ function App() {
             environment={environment}
             query={ graphql`
               query AppQuery {
-                ...TodoList_taskListData
+                query {
+                  ...TodoList_taskListData
+                }
               }
             `}
 
@@ -34,7 +36,7 @@ function App() {
 
               return(
                 <div>
-                  <TodoList taskListData={props} />
+                  <TodoList taskListData={props.query} />
                 </div>
               );
             }}

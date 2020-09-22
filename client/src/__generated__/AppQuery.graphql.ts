@@ -6,7 +6,9 @@ import { ConcreteRequest } from "relay-runtime";
 import { FragmentRefs } from "relay-runtime";
 export type AppQueryVariables = {};
 export type AppQueryResponse = {
-    readonly " $fragmentRefs": FragmentRefs<"TodoList_taskListData">;
+    readonly query: {
+        readonly " $fragmentRefs": FragmentRefs<"TodoList_taskListData">;
+    };
 };
 export type AppQuery = {
     readonly response: AppQueryResponse;
@@ -17,7 +19,10 @@ export type AppQuery = {
 
 /*
 query AppQuery {
-  ...TodoList_taskListData
+  query {
+    ...TodoList_taskListData
+    id
+  }
 }
 
 fragment TodoItem_taskData on Task {
@@ -39,7 +44,15 @@ fragment TodoList_taskListData on Query {
 }
 */
 
-const node: ConcreteRequest = {
+const node: ConcreteRequest = (function(){
+var v0 = {
+  "alias": null,
+  "args": null,
+  "kind": "ScalarField",
+  "name": "id",
+  "storageKey": null
+};
+return {
   "fragment": {
     "argumentDefinitions": [],
     "kind": "Fragment",
@@ -47,9 +60,20 @@ const node: ConcreteRequest = {
     "name": "AppQuery",
     "selections": [
       {
+        "alias": null,
         "args": null,
-        "kind": "FragmentSpread",
-        "name": "TodoList_taskListData"
+        "concreteType": "Query",
+        "kind": "LinkedField",
+        "name": "query",
+        "plural": false,
+        "selections": [
+          {
+            "args": null,
+            "kind": "FragmentSpread",
+            "name": "TodoList_taskListData"
+          }
+        ],
+        "storageKey": null
       }
     ],
     "type": "Query",
@@ -64,77 +88,84 @@ const node: ConcreteRequest = {
       {
         "alias": null,
         "args": null,
-        "concreteType": "TasksConnection",
+        "concreteType": "Query",
         "kind": "LinkedField",
-        "name": "allTasks",
+        "name": "query",
         "plural": false,
         "selections": [
           {
             "alias": null,
             "args": null,
-            "concreteType": "Task",
+            "concreteType": "TasksConnection",
             "kind": "LinkedField",
-            "name": "nodes",
-            "plural": true,
+            "name": "allTasks",
+            "plural": false,
             "selections": [
               {
                 "alias": null,
                 "args": null,
-                "kind": "ScalarField",
-                "name": "id",
-                "storageKey": null
-              },
-              {
-                "alias": null,
-                "args": null,
-                "kind": "ScalarField",
-                "name": "rowId",
-                "storageKey": null
-              },
-              {
-                "alias": null,
-                "args": null,
-                "kind": "ScalarField",
-                "name": "task",
-                "storageKey": null
-              },
-              {
-                "alias": null,
-                "args": null,
-                "kind": "ScalarField",
-                "name": "completed",
-                "storageKey": null
-              },
-              {
-                "alias": null,
-                "args": null,
-                "kind": "ScalarField",
-                "name": "dateCreated",
-                "storageKey": null
-              },
-              {
-                "alias": null,
-                "args": null,
-                "kind": "ScalarField",
-                "name": "dateUpdated",
+                "concreteType": "Task",
+                "kind": "LinkedField",
+                "name": "nodes",
+                "plural": true,
+                "selections": [
+                  (v0/*: any*/),
+                  {
+                    "alias": null,
+                    "args": null,
+                    "kind": "ScalarField",
+                    "name": "rowId",
+                    "storageKey": null
+                  },
+                  {
+                    "alias": null,
+                    "args": null,
+                    "kind": "ScalarField",
+                    "name": "task",
+                    "storageKey": null
+                  },
+                  {
+                    "alias": null,
+                    "args": null,
+                    "kind": "ScalarField",
+                    "name": "completed",
+                    "storageKey": null
+                  },
+                  {
+                    "alias": null,
+                    "args": null,
+                    "kind": "ScalarField",
+                    "name": "dateCreated",
+                    "storageKey": null
+                  },
+                  {
+                    "alias": null,
+                    "args": null,
+                    "kind": "ScalarField",
+                    "name": "dateUpdated",
+                    "storageKey": null
+                  }
+                ],
                 "storageKey": null
               }
             ],
             "storageKey": null
-          }
+          },
+          (v0/*: any*/)
         ],
         "storageKey": null
       }
     ]
   },
   "params": {
-    "cacheID": "c947309ea4fb656069f72c1527bd0b88",
+    "cacheID": "cefda92248dc1a17ed458bc866807c05",
     "id": null,
     "metadata": {},
     "name": "AppQuery",
     "operationKind": "query",
-    "text": "query AppQuery {\n  ...TodoList_taskListData\n}\n\nfragment TodoItem_taskData on Task {\n  id\n  rowId\n  task\n  completed\n  dateCreated\n  dateUpdated\n}\n\nfragment TodoList_taskListData on Query {\n  allTasks {\n    nodes {\n      ...TodoItem_taskData\n      id\n    }\n  }\n}\n"
+    "text": "query AppQuery {\n  query {\n    ...TodoList_taskListData\n    id\n  }\n}\n\nfragment TodoItem_taskData on Task {\n  id\n  rowId\n  task\n  completed\n  dateCreated\n  dateUpdated\n}\n\nfragment TodoList_taskListData on Query {\n  allTasks {\n    nodes {\n      ...TodoItem_taskData\n      id\n    }\n  }\n}\n"
   }
 };
-(node as any).hash = '6748d9b4d2c42d4e573c015fa06e3532';
+})();
+(node as any).hash = '5b65a86a7f5992c61f3d91dc875451a1';
 export default node;
