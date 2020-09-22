@@ -4,7 +4,7 @@
   "description": "A guide to help developers onboard to the Button stack by building a simple todo app.",
   "main": "index.js",
   "scripts": {
-    "start": "npx postgraphile -c postgres:///onboarding -s onboarding --enhance-graphiql --watch",
+    "start": "npx postgraphile -c postgres:///onboarding -s onboarding --export-schema-graphql ./schema/schema.graphql --enhance-graphiql --classic-ids --watch",
     "generate-schema" : "npx postgraphile -c postgres:///onboarding -s onboarding --no-server --export-schema-json ./schema/schema.json --export-schema-graphql ./schema/schema.graphql ",
     "test": "test"
   },

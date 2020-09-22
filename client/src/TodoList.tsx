@@ -1,25 +1,26 @@
-import { isTemplateElement } from '@babel/types';
 import React from 'react';
 import { createFragmentContainer } from 'react-relay';
-import { ItemModel } from './model/ItemModel'
+import { TodoList_list } from './__generated__/TodoList_list.graphql'
 import { TodoItem } from './TodoItem'
 
 const graphql = require('babel-plugin-relay/macro');
 
-class TodoListModel {
-    list : ItemModel[]
+interface Props  {
+    tasks : TodoList_list
 }
 
-class TodoList extends React.Component<TodoListModel>{
+class TodoList extends React.Component<Props>{
 
     render(){
-        const itemsList = this.props.list;
+        const itemsList = this.props.tasks.allTasks.nodes;
 
         return(
             <div>
                 <h3>Things to do:</h3>
                 <div>
-                    {itemsList.map(item => <TodoItem {...item} />)}
+                    { 
+                        itemsList.map(item => <TodoItem task={item} />)
+                    }
                 </div>
             </div>
         );

@@ -42,14 +42,14 @@ A point in time as described by the [ISO
 """
 scalar Datetime
 
-"""All input for the `deleteTaskById` mutation."""
-input DeleteTaskByIdInput {
+"""All input for the `deleteTaskByRowId` mutation."""
+input DeleteTaskByRowIdInput {
   """
   An arbitrary string value with no semantic meaning. Will be included in the
   payload verbatim. May be used to track mutations by the client.
   """
   clientMutationId: String
-  id: Int!
+  rowId: Int!
 }
 
 """All input for the `deleteTask` mutation."""
@@ -63,7 +63,7 @@ input DeleteTaskInput {
   """
   The globally unique `ID` which will identify a single `Task` to be deleted.
   """
-  nodeId: ID!
+  id: ID!
 }
 
 """The output of our delete `Task` mutation."""
@@ -111,11 +111,11 @@ type Mutation {
   ): UpdateTaskPayload
 
   """Updates a single `Task` using a unique key and a patch."""
-  updateTaskById(
+  updateTaskByRowId(
     """
     The exclusive input argument for this mutation. An object type, make sure to see documentation for this object’s fields.
     """
-    input: UpdateTaskByIdInput!
+    input: UpdateTaskByRowIdInput!
   ): UpdateTaskPayload
 
   """Deletes a single `Task` using its globally unique id."""
@@ -127,11 +127,11 @@ type Mutation {
   ): DeleteTaskPayload
 
   """Deletes a single `Task` using a unique key."""
-  deleteTaskById(
+  deleteTaskByRowId(
     """
     The exclusive input argument for this mutation. An object type, make sure to see documentation for this object’s fields.
     """
-    input: DeleteTaskByIdInput!
+    input: DeleteTaskByRowIdInput!
   ): DeleteTaskPayload
 }
 
@@ -140,7 +140,7 @@ interface Node {
   """
   A globally unique identifier. Can be used in various places throughout the system to identify this single value.
   """
-  nodeId: ID!
+  id: ID!
 }
 
 """Information about pagination in a connection."""
@@ -169,12 +169,12 @@ type Query implements Node {
   """
   The root query type must be a `Node` to work well with Relay 1 mutations. This just resolves to `query`.
   """
-  nodeId: ID!
+  id: ID!
 
   """Fetches an object given its globally unique `ID`."""
   node(
     """The globally unique `ID`."""
-    nodeId: ID!
+    id: ID!
   ): Node
 
   """Reads and enables pagination through a set of `Task`."""
@@ -205,12 +205,12 @@ type Query implements Node {
     """
     condition: TaskCondition
   ): TasksConnection
-  taskById(id: Int!): Task
+  taskByRowId(rowId: Int!): Task
 
   """Reads a single `Task` using its globally unique `ID`."""
   task(
     """The globally unique `ID` to be used in selecting a single `Task`."""
-    nodeId: ID!
+    id: ID!
   ): Task
 }
 
@@ -218,8 +218,8 @@ type Task implements Node {
   """
   A globally unique identifier. Can be used in various places throughout the system to identify this single value.
   """
-  nodeId: ID!
-  id: Int!
+  id: ID!
+  rowId: Int!
   task: String
   completed: Boolean
   dateCreated: Datetime!
@@ -230,8 +230,8 @@ type Task implements Node {
 A condition to be used against `Task` object types. All fields are tested for equality and combined with a logical ‘and.’
 """
 input TaskCondition {
-  """Checks for equality with the object’s `id` field."""
-  id: Int
+  """Checks for equality with the object’s `rowId` field."""
+  rowId: Int
 
   """Checks for equality with the object’s `task` field."""
   task: String
@@ -248,7 +248,7 @@ input TaskCondition {
 
 """An input for mutations affecting `Task`"""
 input TaskInput {
-  id: Int
+  rowId: Int
   task: String
   completed: Boolean
   dateCreated: Datetime
@@ -257,7 +257,7 @@ input TaskInput {
 
 """Represents an update to a `Task`. Fields that are set will be updated."""
 input TaskPatch {
-  id: Int
+  rowId: Int
   task: String
   completed: Boolean
   dateCreated: Datetime
@@ -307,8 +307,8 @@ enum TasksOrderBy {
   PRIMARY_KEY_DESC
 }
 
-"""All input for the `updateTaskById` mutation."""
-input UpdateTaskByIdInput {
+"""All input for the `updateTaskByRowId` mutation."""
+input UpdateTaskByRowIdInput {
   """
   An arbitrary string value with no semantic meaning. Will be included in the
   payload verbatim. May be used to track mutations by the client.
@@ -319,7 +319,7 @@ input UpdateTaskByIdInput {
   An object where the defined keys will be set on the `Task` being updated.
   """
   taskPatch: TaskPatch!
-  id: Int!
+  rowId: Int!
 }
 
 """All input for the `updateTask` mutation."""
@@ -333,7 +333,7 @@ input UpdateTaskInput {
   """
   The globally unique `ID` which will identify a single `Task` to be updated.
   """
-  nodeId: ID!
+  id: ID!
 
   """
   An object where the defined keys will be set on the `Task` being updated.

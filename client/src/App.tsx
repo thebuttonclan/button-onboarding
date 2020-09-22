@@ -1,53 +1,46 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { QueryRenderer } from 'react-relay';
+import graphql from 'babel-plugin-relay/macro';
 import environment from './RelayEnvironment';
 
-import { QueryRenderer } from 'react-relay';
-const graphql = require('babel-plugin-relay/macro');
+import './App.css';
 
-class App extends React.Component {
-  render() { 
+
+function App() {
     return (
-      <QueryRenderer
-        environment={environment}
-        // query={ graphql`
-        //   query AppQuery {
-        //     ...TodoList_list
-        //   }
-        // `}
+      <div className="App">
+        <main>
+          <QueryRenderer
+            environment={environment}
+            query={ graphql`
+              query AppQuery {
+                ...TodoList_list
+              }
+            `}
 
-        query={ graphql`
-          query AppQuery {
-              allTasks {
-                nodes{
-                  id,
-                  task,
-                  completed
-                }
-            }
-          }
-        `}
-        variables={{}} 
-        render={({error, props}) => {
+            variables={{}} 
+            render={({error, props}) => {
+              if(error) {
+                return (
+                  <p>{JSON.stringify(error)}</p>
+                );
+              }
+              if(!props || props == null){
+                return (
+                  <div>Loading...</div>
+                );
+              }
 
-
-          if(error) {
-            return <p>{JSON.stringify(error)}</p>;
-          }
-          if(!props || props == null){
-            return <div>Loading...</div>;
-          }
-
-          return(
-            <div>
-              <p>{JSON.stringify(props)}</p>
-            </div>
-          );
-        }}
-        />
-      );
-    }
+              return(
+                <div>
+                  <p>{JSON.stringify(props)}</p>
+                </div>
+              );
+            }}
+          />
+        </main>
+      </div>
+    );
 }
 
 export default App;
