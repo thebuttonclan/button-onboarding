@@ -1,25 +1,30 @@
 import React from 'react';
 import { createFragmentContainer } from 'react-relay';
-import { TodoList_list } from './__generated__/TodoList_list.graphql'
+import { TodoList_taskListData } from './__generated__/TodoList_taskListData.graphql'
 import { TodoItem } from './TodoItem'
 
 const graphql = require('babel-plugin-relay/macro');
 
 interface Props  {
-    list : TodoList_list
+    taskListData : TodoList_taskListData
 }
 
 class TodoList extends React.Component<Props>{
 
-    render(){
-        const itemsList = this.props.list.allTasks.nodes;
+    render(){       
+
+        const allItems = this.props.taskListData.allTasks.nodes.map(node => {
+            return (
+                <TodoItem taskId={node.id} taskData={node} />
+            )
+        });
 
         return(
             <div>
                 <h3>Things to do:</h3>
                 <div>
                     { 
-                        itemsList.map(i => <TodoItem item={i} />)
+                        allItems
                     }
                 </div>
             </div>
@@ -30,12 +35,15 @@ class TodoList extends React.Component<Props>{
 
 
 export default createFragmentContainer(TodoList, {
-    list : graphql`
-        fragment TodoList_list on Query {
-            allTasks {
-                nodes{
-                    ...TodoItem_item
-                }
+    taskListData : graphql`
+        fragment TodoList_taskListData on Query {
+            allTasks {                
+                nodes {
+                    id,
+                    data {
+                        ...TodoItem_taskData
+                    }
+                }                
             }
         }
     `

@@ -2,7 +2,8 @@ import React from 'react';
 import { QueryRenderer } from 'react-relay';
 import graphql from 'babel-plugin-relay/macro';
 import environment from './RelayEnvironment';
-
+import TodoList from './TodoList';
+import {AppQuery} from './__generated__/AppQuery.graphql'
 import './App.css';
 
 
@@ -10,11 +11,11 @@ function App() {
     return (
       <div className="App">
         <main>
-          <QueryRenderer
+          <QueryRenderer<AppQuery>
             environment={environment}
             query={ graphql`
               query AppQuery {
-                ...TodoList_list
+                ...TodoList_taskListData
               }
             `}
 
@@ -33,7 +34,7 @@ function App() {
 
               return(
                 <div>
-                  <p>{JSON.stringify(props)}</p>
+                  <TodoList taskListData={props} />
                 </div>
               );
             }}

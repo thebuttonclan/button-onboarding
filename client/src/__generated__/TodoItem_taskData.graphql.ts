@@ -4,19 +4,19 @@
 
 import { ReaderFragment } from "relay-runtime";
 import { FragmentRefs } from "relay-runtime";
-export type TodoItem_item = {
+export type TodoItem_taskData = {
     readonly id: string;
     readonly rowId: number;
     readonly task: string | null;
     readonly completed: boolean | null;
     readonly dateCreated: unknown;
     readonly dateUpdated: unknown;
-    readonly " $refType": "TodoItem_item";
+    readonly " $refType": "TodoItem_taskData";
 };
-export type TodoItem_item$data = TodoItem_item;
-export type TodoItem_item$key = {
-    readonly " $data"?: TodoItem_item$data;
-    readonly " $fragmentRefs": FragmentRefs<"TodoItem_item">;
+export type TodoItem_taskData$data = TodoItem_taskData;
+export type TodoItem_taskData$key = {
+    readonly " $data"?: TodoItem_taskData$data;
+    readonly " $fragmentRefs": FragmentRefs<"TodoItem_taskData">;
 };
 
 
@@ -25,7 +25,7 @@ const node: ReaderFragment = {
   "argumentDefinitions": [],
   "kind": "Fragment",
   "metadata": null,
-  "name": "TodoItem_item",
+  "name": "TodoItem_taskData",
   "selections": [
     {
       "alias": null,
@@ -73,5 +73,5 @@ const node: ReaderFragment = {
   "type": "Task",
   "abstractKey": null
 };
-(node as any).hash = '0b3a8fc2aca3610ea3e21490eef9ccf1';
+(node as any).hash = 'd530447cd47b84e31158b025dd58a820';
 export default node;

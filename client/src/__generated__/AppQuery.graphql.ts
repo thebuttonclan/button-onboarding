@@ -6,7 +6,7 @@ import { ConcreteRequest } from "relay-runtime";
 import { FragmentRefs } from "relay-runtime";
 export type AppQueryVariables = {};
 export type AppQueryResponse = {
-    readonly " $fragmentRefs": FragmentRefs<"TodoList_list">;
+    readonly " $fragmentRefs": FragmentRefs<"TodoList_taskListData">;
 };
 export type AppQuery = {
     readonly response: AppQueryResponse;
@@ -17,10 +17,10 @@ export type AppQuery = {
 
 /*
 query AppQuery {
-  ...TodoList_list
+  ...TodoList_taskListData
 }
 
-fragment TodoItem_item on Task {
+fragment TodoItem_taskData on Task {
   id
   rowId
   task
@@ -29,11 +29,11 @@ fragment TodoItem_item on Task {
   dateUpdated
 }
 
-fragment TodoList_list on Query {
+fragment TodoList_taskListData on Query {
   allTasks {
     nodes {
-      ...TodoItem_item
       id
+      ...TodoItem_taskData
     }
   }
 }
@@ -49,7 +49,7 @@ const node: ConcreteRequest = {
       {
         "args": null,
         "kind": "FragmentSpread",
-        "name": "TodoList_list"
+        "name": "TodoList_taskListData"
       }
     ],
     "type": "Query",
@@ -128,13 +128,13 @@ const node: ConcreteRequest = {
     ]
   },
   "params": {
-    "cacheID": "25fe90a3a45a2ecfedb8b2675cb32fbf",
+    "cacheID": "975665b46f3699a9cbed3481b3e8463e",
     "id": null,
     "metadata": {},
     "name": "AppQuery",
     "operationKind": "query",
-    "text": "query AppQuery {\n  ...TodoList_list\n}\n\nfragment TodoItem_item on Task {\n  id\n  rowId\n  task\n  completed\n  dateCreated\n  dateUpdated\n}\n\nfragment TodoList_list on Query {\n  allTasks {\n    nodes {\n      ...TodoItem_item\n      id\n    }\n  }\n}\n"
+    "text": "query AppQuery {\n  ...TodoList_taskListData\n}\n\nfragment TodoItem_taskData on Task {\n  id\n  rowId\n  task\n  completed\n  dateCreated\n  dateUpdated\n}\n\nfragment TodoList_taskListData on Query {\n  allTasks {\n    nodes {\n      id\n      ...TodoItem_taskData\n    }\n  }\n}\n"
   }
 };
-(node as any).hash = '01ee95863880210ae9616beeca9d4e2a';
+(node as any).hash = '6748d9b4d2c42d4e573c015fa06e3532';
 export default node;

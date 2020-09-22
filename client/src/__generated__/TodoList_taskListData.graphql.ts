@@ -4,18 +4,19 @@
 
 import { ReaderFragment } from "relay-runtime";
 import { FragmentRefs } from "relay-runtime";
-export type TodoList_list = {
+export type TodoList_taskListData = {
     readonly allTasks: {
         readonly nodes: ReadonlyArray<{
-            readonly " $fragmentRefs": FragmentRefs<"TodoItem_item">;
+            readonly id: string;
+            readonly " $fragmentRefs": FragmentRefs<"TodoItem_taskData">;
         } | null>;
     } | null;
-    readonly " $refType": "TodoList_list";
+    readonly " $refType": "TodoList_taskListData";
 };
-export type TodoList_list$data = TodoList_list;
-export type TodoList_list$key = {
-    readonly " $data"?: TodoList_list$data;
-    readonly " $fragmentRefs": FragmentRefs<"TodoList_list">;
+export type TodoList_taskListData$data = TodoList_taskListData;
+export type TodoList_taskListData$key = {
+    readonly " $data"?: TodoList_taskListData$data;
+    readonly " $fragmentRefs": FragmentRefs<"TodoList_taskListData">;
 };
 
 
@@ -24,7 +25,7 @@ const node: ReaderFragment = {
   "argumentDefinitions": [],
   "kind": "Fragment",
   "metadata": null,
-  "name": "TodoList_list",
+  "name": "TodoList_taskListData",
   "selections": [
     {
       "alias": null,
@@ -43,9 +44,16 @@ const node: ReaderFragment = {
           "plural": true,
           "selections": [
             {
+              "alias": null,
+              "args": null,
+              "kind": "ScalarField",
+              "name": "id",
+              "storageKey": null
+            },
+            {
               "args": null,
               "kind": "FragmentSpread",
-              "name": "TodoItem_item"
+              "name": "TodoItem_taskData"
             }
           ],
           "storageKey": null
@@ -57,5 +65,5 @@ const node: ReaderFragment = {
   "type": "Query",
   "abstractKey": null
 };
-(node as any).hash = '3aee8ea6c4914a61bbbf88872e1fefee';
+(node as any).hash = 'b79d3e7ccc53ba3eefa776a9fa362105';
 export default node;

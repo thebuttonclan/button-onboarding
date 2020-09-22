@@ -1,30 +1,31 @@
 import { isTemplateElement } from '@babel/types';
 import React from 'react';
 import {createFragmentContainer, Environment} from 'react-relay';
-import { TodoItem_item } from './__generated__/TodoItem_item.graphql';
+import { TodoItem_taskData } from './__generated__/TodoItem_taskData.graphql';
 const graphql = require('babel-plugin-relay/macro');
 
-interface Props {
-    item : TodoItem_item
+export interface Props {
+    taskId: string,
+    taskData : TodoItem_taskData
 }
 
 export class TodoItem extends React.Component<Props> {
 
     render(){
 
-        const task = this.props.item;
+        const model = this.props.taskData;
 
         return (
             <div>
-                <p>To Do : {task.task}</p>
+                <p>To Do : {model.task}</p>
             </div>
         );
     }
 }
 
 export default createFragmentContainer(TodoItem, {
-    item: graphql`
-        fragment TodoItem_item on Task {
+    taskData: graphql`
+        fragment TodoItem_taskData on Task {
             id,
             rowId,
             task,
