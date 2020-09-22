@@ -5,14 +5,14 @@ import { TodoItem_item } from './__generated__/TodoItem_item.graphql';
 const graphql = require('babel-plugin-relay/macro');
 
 interface Props {
-    task : TodoItem_item
+    item : TodoItem_item
 }
 
 export class TodoItem extends React.Component<Props> {
 
     render(){
 
-        const task = this.props.task;
+        const task = this.props.item;
 
         return (
             <div>
