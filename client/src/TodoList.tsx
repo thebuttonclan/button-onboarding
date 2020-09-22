@@ -13,18 +13,16 @@ class TodoList extends React.Component<Props>{
 
     render(){       
 
-        const allItems = this.props.taskListData.allTasks.nodes.map(node => {
-            return (
-                <TodoItem taskId={node.id} taskData={node} />
-            )
-        });
+        const allTasks = this.props.taskListData.allTasks.nodes ; 
 
         return(
             <div>
                 <h3>Things to do:</h3>
                 <div>
                     { 
-                        allItems
+                        allTasks.map(task => 
+                            <TodoItem taskData={task}></TodoItem>                            
+                        )
                     }
                 </div>
             </div>
@@ -39,10 +37,7 @@ export default createFragmentContainer(TodoList, {
         fragment TodoList_taskListData on Query {
             allTasks {                
                 nodes {
-                    id,
-                    data {
-                        ...TodoItem_taskData
-                    }
+                    ...TodoItem_taskData
                 }                
             }
         }

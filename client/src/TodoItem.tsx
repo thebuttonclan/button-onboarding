@@ -5,7 +5,6 @@ import { TodoItem_taskData } from './__generated__/TodoItem_taskData.graphql';
 const graphql = require('babel-plugin-relay/macro');
 
 export interface Props {
-    taskId: string,
     taskData : TodoItem_taskData
 }
 

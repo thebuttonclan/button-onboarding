@@ -32,8 +32,8 @@ fragment TodoItem_taskData on Task {
 fragment TodoList_taskListData on Query {
   allTasks {
     nodes {
-      id
       ...TodoItem_taskData
+      id
     }
   }
 }
@@ -128,12 +128,12 @@ const node: ConcreteRequest = {
     ]
   },
   "params": {
-    "cacheID": "975665b46f3699a9cbed3481b3e8463e",
+    "cacheID": "c947309ea4fb656069f72c1527bd0b88",
     "id": null,
     "metadata": {},
     "name": "AppQuery",
     "operationKind": "query",
-    "text": "query AppQuery {\n  ...TodoList_taskListData\n}\n\nfragment TodoItem_taskData on Task {\n  id\n  rowId\n  task\n  completed\n  dateCreated\n  dateUpdated\n}\n\nfragment TodoList_taskListData on Query {\n  allTasks {\n    nodes {\n      id\n      ...TodoItem_taskData\n    }\n  }\n}\n"
+    "text": "query AppQuery {\n  ...TodoList_taskListData\n}\n\nfragment TodoItem_taskData on Task {\n  id\n  rowId\n  task\n  completed\n  dateCreated\n  dateUpdated\n}\n\nfragment TodoList_taskListData on Query {\n  allTasks {\n    nodes {\n      ...TodoItem_taskData\n      id\n    }\n  }\n}\n"
   }
 };
 (node as any).hash = '6748d9b4d2c42d4e573c015fa06e3532';

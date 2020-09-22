@@ -1,6 +1,0 @@
-{
-    "plugins": [
-        ["relay", {"artifactsDirectory": "./src/__generated__"}],
-        ["transform-es2015-modules-commonjs"]
-    ]
-}
