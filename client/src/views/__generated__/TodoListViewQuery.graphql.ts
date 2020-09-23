@@ -4,21 +4,21 @@
 
 import { ConcreteRequest } from "relay-runtime";
 import { FragmentRefs } from "relay-runtime";
-export type AppQueryVariables = {};
-export type AppQueryResponse = {
+export type TodoListViewQueryVariables = {};
+export type TodoListViewQueryResponse = {
     readonly query: {
         readonly " $fragmentRefs": FragmentRefs<"TodoList_taskListData">;
     };
 };
-export type AppQuery = {
-    readonly response: AppQueryResponse;
-    readonly variables: AppQueryVariables;
+export type TodoListViewQuery = {
+    readonly response: TodoListViewQueryResponse;
+    readonly variables: TodoListViewQueryVariables;
 };
 
 
 
 /*
-query AppQuery {
+query TodoListViewQuery {
   query {
     ...TodoList_taskListData
     id
@@ -58,7 +58,7 @@ return {
     "argumentDefinitions": [],
     "kind": "Fragment",
     "metadata": null,
-    "name": "AppQuery",
+    "name": "TodoListViewQuery",
     "selections": [
       {
         "alias": null,
@@ -84,7 +84,7 @@ return {
   "operation": {
     "argumentDefinitions": [],
     "kind": "Operation",
-    "name": "AppQuery",
+    "name": "TodoListViewQuery",
     "selections": [
       {
         "alias": null,
@@ -159,14 +159,14 @@ return {
     ]
   },
   "params": {
-    "cacheID": "e5769c6b96a1f4e54eeaa8574fa621a6",
+    "cacheID": "43b23aa5743a508ce7fd191923f1f59e",
     "id": null,
     "metadata": {},
-    "name": "AppQuery",
+    "name": "TodoListViewQuery",
     "operationKind": "query",
-    "text": "query AppQuery {\n  query {\n    ...TodoList_taskListData\n    id\n  }\n}\n\nfragment TodoItem_taskData on Task {\n  id\n  rowId\n  task\n  completed\n  dateCreated\n  dateUpdated\n}\n\nfragment TodoList_taskListData on Query {\n  allTasks {\n    nodes {\n      rowId\n      ...TodoItem_taskData\n      id\n    }\n  }\n}\n"
+    "text": "query TodoListViewQuery {\n  query {\n    ...TodoList_taskListData\n    id\n  }\n}\n\nfragment TodoItem_taskData on Task {\n  id\n  rowId\n  task\n  completed\n  dateCreated\n  dateUpdated\n}\n\nfragment TodoList_taskListData on Query {\n  allTasks {\n    nodes {\n      rowId\n      ...TodoItem_taskData\n      id\n    }\n  }\n}\n"
   }
 };
 })();
-(node as any).hash = '5b65a86a7f5992c61f3d91dc875451a1';
+(node as any).hash = '7712fd00e8d1b1cda4e7c4f0edbb420a';
 export default node;

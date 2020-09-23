@@ -2,7 +2,8 @@ import React from 'react';
 import { createFragmentContainer } from 'react-relay';
 import { TodoList_taskListData } from './__generated__/TodoList_taskListData.graphql'
 import TodoItem from './TodoItem'
-import Panel from 'muicss/lib/react/panel'
+import Panel from 'muicss/lib/react/panel';
+import Row from 'muicss/lib/react/row';
 
 const graphql = require('babel-plugin-relay/macro');
 
@@ -19,16 +20,20 @@ class TodoList extends React.Component<Props>{
         return(
             <Panel>                
                 <div className="mui--text-headline">Things to do:</div>
-                <div>
-                    { 
-                        taskList.map(task => 
-                            <TodoItem 
-                                key={task.rowId}
-                                taskData={task}
-                            />
-                        )
-                    }
-                </div>
+                <Row>
+                    <table>
+                        <tbody>
+                            { 
+                                taskList.map(task => 
+                                    <TodoItem 
+                                        key={task.rowId}
+                                        taskData={task}
+                                    />
+                                )
+                            }
+                        </tbody>
+                    </table>
+                </Row>
             </Panel>
         );
 
