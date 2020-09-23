@@ -4,7 +4,12 @@ import graphql from 'babel-plugin-relay/macro';
 import environment from './RelayEnvironment';
 import TodoList from './TodoList';
 import {AppQuery} from './__generated__/AppQuery.graphql'
-import './App.css';
+
+import 'muicss/dist/css/mui.min.css'
+
+import Container from 'muicss/lib/react/container'
+import Row from 'muicss/lib/react/row'
+import Col from 'muicss/lib/react/col'
 
 
 function App() {
@@ -35,9 +40,13 @@ function App() {
               }
 
               return(
-                <div>
-                  <TodoList taskListData={props.query} />
-                </div>
+                <Container fluid={true} className="mui--text-center mainContainer">
+                  <Row>
+                    <Col md="4" md-offset="4">
+                      <TodoList taskListData={props.query} />
+                    </Col>
+                  </Row>
+                </Container>
               );
             }}
           />

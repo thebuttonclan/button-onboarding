@@ -37,6 +37,7 @@ fragment TodoItem_taskData on Task {
 fragment TodoList_taskListData on Query {
   allTasks {
     nodes {
+      rowId
       ...TodoItem_taskData
       id
     }
@@ -109,7 +110,6 @@ return {
                 "name": "nodes",
                 "plural": true,
                 "selections": [
-                  (v0/*: any*/),
                   {
                     "alias": null,
                     "args": null,
@@ -117,6 +117,7 @@ return {
                     "name": "rowId",
                     "storageKey": null
                   },
+                  (v0/*: any*/),
                   {
                     "alias": null,
                     "args": null,
@@ -158,12 +159,12 @@ return {
     ]
   },
   "params": {
-    "cacheID": "cefda92248dc1a17ed458bc866807c05",
+    "cacheID": "e5769c6b96a1f4e54eeaa8574fa621a6",
     "id": null,
     "metadata": {},
     "name": "AppQuery",
     "operationKind": "query",
-    "text": "query AppQuery {\n  query {\n    ...TodoList_taskListData\n    id\n  }\n}\n\nfragment TodoItem_taskData on Task {\n  id\n  rowId\n  task\n  completed\n  dateCreated\n  dateUpdated\n}\n\nfragment TodoList_taskListData on Query {\n  allTasks {\n    nodes {\n      ...TodoItem_taskData\n      id\n    }\n  }\n}\n"
+    "text": "query AppQuery {\n  query {\n    ...TodoList_taskListData\n    id\n  }\n}\n\nfragment TodoItem_taskData on Task {\n  id\n  rowId\n  task\n  completed\n  dateCreated\n  dateUpdated\n}\n\nfragment TodoList_taskListData on Query {\n  allTasks {\n    nodes {\n      rowId\n      ...TodoItem_taskData\n      id\n    }\n  }\n}\n"
   }
 };
 })();

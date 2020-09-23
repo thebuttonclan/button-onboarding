@@ -7,6 +7,7 @@ import { FragmentRefs } from "relay-runtime";
 export type TodoList_taskListData = {
     readonly allTasks: {
         readonly nodes: ReadonlyArray<{
+            readonly rowId: number;
             readonly " $fragmentRefs": FragmentRefs<"TodoItem_taskData">;
         } | null>;
     } | null;
@@ -43,6 +44,13 @@ const node: ReaderFragment = {
           "plural": true,
           "selections": [
             {
+              "alias": null,
+              "args": null,
+              "kind": "ScalarField",
+              "name": "rowId",
+              "storageKey": null
+            },
+            {
               "args": null,
               "kind": "FragmentSpread",
               "name": "TodoItem_taskData"
@@ -57,5 +65,5 @@ const node: ReaderFragment = {
   "type": "Query",
   "abstractKey": null
 };
-(node as any).hash = 'd40fc9c2580968ea4d3144543265ee70';
+(node as any).hash = '04661cddbb1320aec3dfb09d9092bc3f';
 export default node;

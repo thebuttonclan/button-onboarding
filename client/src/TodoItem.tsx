@@ -1,7 +1,8 @@
-import { isTemplateElement } from '@babel/types';
 import React from 'react';
-import {createFragmentContainer, Environment} from 'react-relay';
+import {createFragmentContainer} from 'react-relay';
 import { TodoItem_taskData } from './__generated__/TodoItem_taskData.graphql';
+import Checkbox from "muicss/lib/react/checkbox"
+
 const graphql = require('babel-plugin-relay/macro');
 
 interface Props {
@@ -14,9 +15,8 @@ class TodoItem extends React.Component<Props> {
         const model = this.props.taskData;
 
         return (
-            <div>
-                <p>To Do : {model.task}</p>
-            </div>
+            <Checkbox defaultChecked={model.completed} label={model.task}>                    
+            </Checkbox>            
         );
     }
 }
