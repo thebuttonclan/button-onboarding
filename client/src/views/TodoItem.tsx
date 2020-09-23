@@ -4,20 +4,23 @@ import { TodoItem_taskData } from './__generated__/TodoItem_taskData.graphql';
 import Checkbox from 'muicss/lib/react/checkbox';
 import Button from 'muicss/lib/react/button';
 import ChangeTaskCompletedStatusMutation from '../graphql/ChangeTaskCompletedStatusMutation'
+import {IRelayProps} from '../IRelayProps';
 
 const graphql = require('babel-plugin-relay/macro');
 
-interface Props {
+interface IProps extends IRelayProps {
     taskData : TodoItem_taskData
 }
 
-class TodoItem extends React.Component<Props> {
+class TodoItem extends React.Component<IProps> {
     
     onCheckboxChanged(evt){
+        console.warn(this.props);
+
         const complete = evt.target.checked;
 
         ChangeTaskCompletedStatusMutation.commit(
-            this.props['relay'].environment,
+            this.props.relay.environment,
             complete,
             this.props.taskData
         )
