@@ -14,9 +14,7 @@ interface IProps extends IRelayProps {
 
 class TodoItem extends React.Component<IProps> {
     
-    onCheckboxChanged(evt){
-        console.warn(this.props);
-
+    onCheckboxChanged(evt){        
         const complete = evt.target.checked;
 
         ChangeTaskCompletedStatusMutation.commit(
@@ -39,8 +37,10 @@ class TodoItem extends React.Component<IProps> {
                         onChange={this.onCheckboxChanged.bind(this)}
                     />
                 </td>
-                <td>
-                    <Button>Remove</Button>
+                <td style={{paddingLeft: "20px"}}>
+                    <Button variant="fab" size="small">
+                        -
+                    </Button>
                 </td>  
             </tr>
         );

@@ -5,6 +5,7 @@ import environment from '../RelayEnvironment';
 import { TodoListViewQuery } from './__generated__/TodoListViewQuery.graphql'
 import Row from 'muicss/lib/react/row'
 import Col from 'muicss/lib/react/col'
+import CreateTask from './CreateTask';
 
 const graphql = require('babel-plugin-relay/macro');
 
