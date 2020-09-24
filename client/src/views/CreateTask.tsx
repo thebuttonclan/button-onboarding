@@ -1,4 +1,3 @@
-
 import React from 'react';
 
 import Row from 'muicss/lib/react/row';
@@ -9,6 +8,10 @@ import Button from 'muicss/lib/react/button';
 
 class CreateTask extends React.Component{
 
+    addTask(evt) {
+        
+    }
+
     render() {
         return(
             <Row>
@@ -16,7 +19,7 @@ class CreateTask extends React.Component{
                     <Input placeholder="New item to do"></Input>
                 </Col>
                 <Col md="3">
-                    <Button variant="raised" color="primary">Add</Button>
+                    <Button variant="raised" color="primary" onClick={this.addTask} >Add</Button>
                 </Col>
             </Row>
         );

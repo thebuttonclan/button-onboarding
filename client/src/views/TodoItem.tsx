@@ -4,6 +4,8 @@ import { TodoItem_taskData } from './__generated__/TodoItem_taskData.graphql';
 import Checkbox from 'muicss/lib/react/checkbox';
 import Button from 'muicss/lib/react/button';
 import ChangeTaskCompletedStatusMutation from '../graphql/ChangeTaskCompletedStatusMutation'
+import DeleteTaskMutation from '../graphql/DeleteTaskMutation'
+
 import {IRelayProps} from '../IRelayProps';
 
 const graphql = require('babel-plugin-relay/macro');
@@ -21,7 +23,11 @@ class TodoItem extends React.Component<IProps> {
             this.props.relay.environment,
             complete,
             this.props.taskData
-        )
+        );
+    }
+
+    onDeleteClicked(evt){
+        DeleteTaskMutation.commit(this.props.relay.environment, this.props.taskData);
     }
     
     render(){
@@ -38,7 +44,7 @@ class TodoItem extends React.Component<IProps> {
                     />
                 </td>
                 <td style={{paddingLeft: "20px"}}>
-                    <Button variant="fab" size="small">
+                    <Button variant="fab" size="small" onClick={this.onDeleteClicked.bind(this)}>
                         -
                     </Button>
                 </td>  
