@@ -3,3 +3,4 @@
 %uri=https://github.com/naomiaro/button-onboarding
 
 appschema 2021-03-19T20:12:31Z Naomi Aro <naomi.aro@gov.bc.ca> # Add schema for all onboarding objects.
+todos [appschema] 2021-03-23T18:08:10Z Naomi Aro <naomi.aro@gov.bc.ca> # Creates a table for the todos.
