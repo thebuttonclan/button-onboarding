@@ -4,6 +4,6 @@ BEGIN;
 
 -- XXX Add DDLs here.
 
-DROP SCHEMA onboarding;
+DROP SCHEMA todo_app;
 
 COMMIT;
