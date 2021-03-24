@@ -1,0 +1,8 @@
+%syntax-version=1.0.0
+%project=onboarding
+%uri=https://github.com/naomiaro/button-onboarding
+
+appschema 2021-03-19T20:12:31Z Naomi Aro <naomi.aro@gov.bc.ca> # Add schema for all onboarding objects.
+todos [appschema] 2021-03-23T18:08:10Z Naomi Aro <naomi.aro@gov.bc.ca> # Creates a table for the todos.
+insert_todo [todos appschema] 2021-03-23T20:44:59Z Naomi Aro <naomi.aro@gov.bc.ca> # Function to insert TODO
+seed_todo [insert_todo todos appschema] 2021-03-23T23:22:49Z Naomi Aro <naomi.aro@gov.bc.ca> # seed todos table
