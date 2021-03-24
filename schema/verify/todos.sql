@@ -1,4 +1,4 @@
--- Verify onboarding:todo_app.todos on pg
+-- Verify onboarding:todos on pg
 
 BEGIN;
 

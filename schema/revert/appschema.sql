@@ -2,8 +2,6 @@
 
 BEGIN;
 
--- XXX Add DDLs here.
-
 DROP SCHEMA todo_app;
 
 COMMIT;

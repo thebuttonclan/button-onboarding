@@ -1,4 +1,4 @@
--- Deploy onboarding:todo_app.todos to pg
+-- Deploy onboarding:todos to pg
 -- requires: appschema
 
 BEGIN;

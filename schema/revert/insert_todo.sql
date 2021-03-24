@@ -1,4 +1,4 @@
--- Revert onboarding:todo_app.insert_todo from pg
+-- Revert onboarding:insert_todo from pg
 
 BEGIN;
 

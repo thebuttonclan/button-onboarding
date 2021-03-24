@@ -1,4 +1,4 @@
--- Deploy onboarding:todo_app.insert_todo to pg
+-- Deploy onboarding:insert_todo to pg
 -- requires: todos
 -- requires: appschema
 

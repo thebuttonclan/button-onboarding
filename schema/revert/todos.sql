@@ -1,4 +1,4 @@
--- Revert onboarding:todo_app.todos from pg
+-- Revert onboarding:todos from pg
 
 BEGIN;
 
