@@ -4,10 +4,10 @@ BEGIN;
 
 DO $$
 DECLARE
-    count INTEGER;
+    todos_count INTEGER;
 BEGIN
-   count := (SELECT last_value FROM todo_app.todos_id_seq);
-   ASSERT count = 2;
+   todos_count := (SELECT last_value FROM todo_app.todos_id_seq);
+   ASSERT todos_count = 5;
 END $$;
 
 ROLLBACK;
