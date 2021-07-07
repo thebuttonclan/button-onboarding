@@ -4,11 +4,11 @@
 BEGIN;
 
 CREATE TABLE todo_app.todos (
-  id INTEGER PRIMARY KEY,
+  id SERIAL PRIMARY KEY,
   task VARCHAR(280) NOT NULL,
   completed BOOLEAN DEFAULT false,
-  date_created DATE,
-  date_updated DATE
+  date_created TIMESTAMPTZ DEFAULT current_timestamp,
+  date_updated TIMESTAMPTZ DEFAULT current_timestamp
 );
 
 COMMIT;

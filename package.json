@@ -1,0 +1,16 @@
+{
+  "name": "button-onboarding",
+  "version": "1.0.0",
+  "description": "Onboarding demo of select elements of the Button stack in the form of a todo app.",
+  "main": "index.js",
+  "repository": "git@github.com:thebuttonclan/button-onboarding.git",
+  "author": "Kristen Cooke <kriscooke@users.noreply.github.com>",
+  "license": "UNLICENSED",
+  "private": true,
+  "scripts": {
+    "start": "postgraphile -s todo_app -c 'postgres:///button_starter' --watch"
+  },
+  "dependencies": {
+    "postgraphile": "^4.6.0"
+  }
+}
